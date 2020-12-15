@@ -8,7 +8,7 @@
     </div>
 
     <div class="main-component">
-<!--      <router-view></router-view>-->
+      <router-view></router-view>
     </div>
 
     <div class="footer">
@@ -72,6 +72,8 @@ body{
   border: 1px solid #E5E7E9;
   border-radius: 5px;
   padding: 10px 20px;
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .header nav button:hover{
@@ -81,20 +83,21 @@ body{
 }
 
 .main-component{
-  height: 70vh;
+  height: 75vh;
   margin: 0%;
   padding: 0%;
   background: #FDFEFE ;
 }
 
 .footer{
-  margin: 0;
+  margin-top: 10%;
   padding: 0;
   width: 100%;
   height: 10vh;
   min-height: 100px;
   background-color: #283747;
   color: #E5E7E9;
+  position: relative;
 }
 
 .footer h2 {
