@@ -9,7 +9,7 @@
             <h2>Formulario de registro</h2><br>
             Nombre: <input type="text" name="name" placeholder="Nombre" v-model="user.name"><br>
             <br>Apellido: <input type="text" name="surname" placeholder="Apellido" v-model="user.surname"><br>
-            <br>Número de Identificación: <input type="text" name="Número de Identificación" placeholder="national_id" v-model="user.national_id"><br>
+            <br>Número de Identificación: <input type="text" name="national_id" placeholder="Número de Identificación" v-model="user.national_id"><br>
             <br>Email: <input type="email" name="email" placeholder="Email" v-model="user.email"><br>
             <br>Teléfono/Celular: <input type="text" name="phone" placeholder="Teléfono/Celular" v-model="user.phone"><br>
 
