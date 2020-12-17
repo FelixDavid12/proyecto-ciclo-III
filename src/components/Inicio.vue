@@ -3,20 +3,20 @@
     <div id="CreateUser">
         <!-- Load icon library -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
+
         <form id="form1" @submit="postData" methods="post">
 
             <h2>Formulario de registro</h2><br>
-            Nombre: <input type="text" name="name" placeholder="name" v-model="user.name"><br>
-            <br>Apellido: <input type="text" name="surname" placeholder="surname" v-model="user.surname"><br>
-            <br>Número de Identificación: <input type="text" name="national_id" placeholder="national_id" v-model="user.national_id"><br>
-            <br>Email: <input type="email" name="email" placeholder="email" v-model="user.email"><br>
-            <br>Teléfono/Celular : <input type="text" name="phone" placeholder="phone" v-model="user.phone"><br>
+            Nombre: <input type="text" name="name" placeholder="Nombre" v-model="user.name"><br>
+            <br>Apellido: <input type="text" name="surname" placeholder="Apellido" v-model="user.surname"><br>
+            <br>Número de Identificación: <input type="text" name="Número de Identificación" placeholder="national_id" v-model="user.national_id"><br>
+            <br>Email: <input type="email" name="email" placeholder="Email" v-model="user.email"><br>
+            <br>Teléfono/Celular: <input type="text" name="phone" placeholder="Teléfono/Celular" v-model="user.phone"><br>
 
             <br><button type="submit" >Registrar</button>
 
         </form>
-        
+
         <form id="form2" @submit="getData" methods="get" style="height: 200px;">
             <h2>Buscar usuario</h2>
             <input type="text" placeholder="Buscar por nombre" name="userName" v-model="userName">
@@ -27,7 +27,7 @@
             <h3>{{this.error}}</h3>
         </form>
 
-        
+
     </div>
 
 </template>
@@ -71,7 +71,7 @@ export default {
     },
     postData(e){
       console.log(this.user)
-    
+
       this.axios.post("https://sprint-2-12.herokuapp.com/user/create/", {
         name: this.user.name,
         surname: this.user.surname,
