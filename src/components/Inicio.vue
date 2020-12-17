@@ -4,27 +4,89 @@
         <!-- Load icon library -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
-        <form id="form1" onsubmit="register()">
+        <form id="form1" @submit="postData" methods="post">
 
             <h2>Formulario de registro</h2><br>
-            Nombre: <input type="text" name="name_user"><br>
-            <br>Apellido: <input type="text" name="lastname_user"><br>
-            <br>Número de Identificación: <input type="text" name="cc_user"><br>
-            <br>Email: <input type="email" name="email_user"><br>
-            <br>Teléfono/Celular : <input type="text" name="tel_user"><br>
+            Nombre: <input type="text" name="name" placeholder="name" v-model="user.name"><br>
+            <br>Apellido: <input type="text" name="surname" placeholder="surname" v-model="user.surname"><br>
+            <br>Número de Identificación: <input type="text" name="national_id" placeholder="national_id" v-model="user.national_id"><br>
+            <br>Email: <input type="email" name="email" placeholder="email" v-model="user.email"><br>
+            <br>Teléfono/Celular : <input type="text" name="phone" placeholder="phone" v-model="user.phone"><br>
 
             <br><button type="submit" >Registrar</button>
 
         </form>
         
-        <form id="form2" onsubmit="search()" style="height: 200px;">
+        <form id="form2" @submit="getData" methods="get" style="height: 200px;">
             <h2>Buscar usuario</h2>
-            <input type="text" placeholder="Buscar por nombre" name="search">
+            <input type="text" placeholder="Buscar por nombre" name="userName" v-model="userName">
             <button type="submit"><i id="btn-search"></i>Buscar</button>
+            <h3>{{this.user.name}}</h3>
+            <h3>{{this.user.surname}}</h3>
+            <h3>{{this.user.email}}</h3>
+            <h3>{{this.error}}</h3>
         </form>
+
+        
     </div>
 
 </template>
+
+<script>
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
+export default {
+  name: 'PostForm',
+  data() {
+    return {
+      userName: "",
+      error:"",
+      user: {
+        name: "",
+        surname: "",
+        national_id: null,
+        email: "",
+        phone: null
+      }
+    }
+  },
+  methods:{
+    getData(e){
+      axios.get('https://sprint-2-12.herokuapp.com/user/'+this.userName)
+      .then(response => {
+        this.user = response.data;
+        if(this.user.name == undefined){
+          this.error = "El usuario no existe";
+        }else{
+          this.error = "";
+        }
+      })
+      .catch(function (error) {
+        console.log('Error: ' + error);
+      });
+      e.preventDefault();
+    },
+    postData(e){
+      console.log(this.user)
+    
+      this.axios.post("https://sprint-2-12.herokuapp.com/user/create/", {
+        name: this.user.name,
+        surname: this.user.surname,
+        national_id: this.user.national_id,
+        email: this.user.email,
+        phone: this.user.phone
+      })
+      .then((result)=>{
+        console.warn(result)
+      })
+      e.preventDefault();
+    }
+  }
+}
+</script>
 
 
 
