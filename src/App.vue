@@ -89,7 +89,7 @@ body{
 }
 
 .main-component{
-  height: 75vh;
+  height: 60vh;
   margin: 0%;
   padding: 0%;
   background: #FDFEFE ;
