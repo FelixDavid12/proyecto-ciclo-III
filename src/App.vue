@@ -4,6 +4,7 @@
       <h1>Sprint 3</h1>
       <nav>
         <button v-on:click="init">Inicio</button>
+        <button v-on:click="users">Usuarios</button>
       </nav>
     </div>
 
@@ -26,6 +27,11 @@ export default {
     init: function () {
       if (this.$route.name !== "inicio") {
         this.$router.push({name: "inicio"})
+      }
+    },
+    users: function () {
+      if (this.$route.name !== "user_listado") {
+        this.$router.push({name: "user_listado"})
       }
     }
   },

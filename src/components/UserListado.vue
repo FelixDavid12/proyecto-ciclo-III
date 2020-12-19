@@ -17,11 +17,6 @@
 
         </form>
         
-        <form id="form2" onsubmit="search()" style="height: 200px;">
-            <h2>Buscar usuario</h2>
-            <input type="text" placeholder="Buscar por nombre" name="search">
-            <button type="submit"><i id="btn-search"></i>Buscar</button>
-        </form>
     </div>
 
 </template>

@@ -1,5 +1,6 @@
 import vueRouter from 'vue-router'
 import Inicio from './components/Inicio'
+import UserListado from './components/UserListado'
 import App from './App'
 
 const router = new vueRouter({
@@ -15,6 +16,11 @@ const router = new vueRouter({
       path: '/inicio',
       name: "inicio",
       component: Inicio
+    },
+    {
+      path: '/userlistado',
+      name: 'user_listado',
+      component: UserListado
     }
   ]
 })
