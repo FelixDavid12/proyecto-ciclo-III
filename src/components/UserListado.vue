@@ -6,7 +6,7 @@
 
       <div class="search_container"></div>
           <div class="search_container_logo">
-            <h2> &nbsp;&nbsp;User Hotel<br>
+            <h2>User Hotel<br>
             <span>Conoce nuestros usuarios</span></h2>
           </div>
       
@@ -90,15 +90,22 @@ export default {
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    align-content: center;
     font-size: 120%;
 }
 .search_container_logo h2{
     color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
 }
 .search_container_logo span{
     color: red;
+    text-align: center;
 }
 .search_container_btn {
   grid-area: 4 / 2 / 5 / 4;
