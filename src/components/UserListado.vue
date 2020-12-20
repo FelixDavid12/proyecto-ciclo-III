@@ -11,12 +11,24 @@
           </div>
       
       <div class="search_container_btn">
-        <button>Listar Usuarios</button>
+        <button >Listar Usuarios</button>
       </div>
       
       <div class="result_container"></div>
         <div class="resul_container_json">
-            <p id="result_json">Usuarios</p>
+        
+            <p id="result_json"0<b>{{users.a.name}}</b> <br>
+            {{users.a.surname}} <br>
+            {{users.a.national_id}} <br>
+            {{users.a.email}} <br>
+            {{users.a.phone}}</p>
+
+
+            <p id="result_json"0<b>{{users.b.name}}</b> <br>
+            {{users.b.surname}} <br>
+            {{users.b.national_id}} <br>
+            {{users.b.email}} <br>
+            {{users.b.phone}}</p>
         </div>
     
     </div>
@@ -25,6 +37,36 @@
 
 
 
+<script>
+import Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
+export default {
+  name: 'PostForm',
+  data() {
+    return {
+      error:"",
+      users: undefined,
+    }
+  },
+  mounted(){
+    
+      axios.get('https://sprint-2-12.herokuapp.com/users/')
+      .then(response => {
+        this.users = response.data;
+        console.log(this.users)
+      })
+      .catch(function (error) {
+        console.log('Error: ' + error);
+      });
+      
+    
+    
+  }
+}
+</script>
 
 
 
