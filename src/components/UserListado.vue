@@ -7,7 +7,7 @@
       <div class="search_container"></div>
           <div class="search_container_logo">
             <h2> &nbsp;&nbsp;User Hotel<br>
-            <span>¡Bienvenido!</span></h2>
+            <span>Conoce nuestros usuarios</span></h2>
           </div>
       
       <div class="search_container_btn">
