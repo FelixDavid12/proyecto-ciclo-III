@@ -50,6 +50,7 @@ export default {
   
   methods: {
     getUsuarios(e){
+      this.users = [];
       axios.get('https://sprint-2-12.herokuapp.com/users/')
       .then(response => {
         var obj = response.data;
