@@ -15,9 +15,9 @@
             <img src="@/assets/usuario.png" width="65px" height="65px" alt="Imagen1">
           </div>
       
-      <!--<div class="search_container_btn">-->
-       <!-- <button v-on:click="getUsuarios">Listar Usuarios</button> -->
-      <!-- </div>-->
+      <div class="search_container_btn">
+       <button v-on:click="getUsuarios">Listar Usuarios</button> 
+      </div>
       
       <div class="result_container"></div>
         <div class="resul_container_json">
@@ -79,7 +79,7 @@ export default {
   background:white;
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: 1fr 0.5fr 0.5fr 4fr 1fr;
+  grid-template-rows: 1fr 0.5fr 0.5fr 4fr 0.5fr 1fr;
 }
 
 .search_container{
@@ -139,11 +139,38 @@ export default {
   color: white;
 }
 
+.search_container_btn {
+  grid-area: 5 / 2 / 6 / 3;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  max-height: 80px;
+  max-width: auto;
+}
+
+.search_container_btn button{
+    width: 20%;
+    padding: 0px;
+    margin-top: 25px;
+    background: #2196F3;
+    border-radius: 50px;
+    color: white;
+    font-size: 18px;
+    border: 1px solid gray;
+    border-left: none; /* Prevent double borders*/
+    cursor: pointer;
+    font: "Verdana";
+}
+
+.search_container_btn button:hover{
+      background-color: #9eb0e0;
+}
+
 .result_container{
-  grid-area: 5 / 1 / 6 / 4;
+  grid-area: 6 / 1 / 7 / 4;
   background-color: white;
 
 }
+
+
 </style>
-
-
