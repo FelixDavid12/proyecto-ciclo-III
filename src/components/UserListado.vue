@@ -1,30 +1,30 @@
 //Template del formulario para crear usuario
 <template>
-  <div id="app">
+<!--  <div id="app">-->
     <div class="UserListado">
     <!-- Load icon library -->
 
       <div class="search_container"></div>
-          
+
           <div class="search_container_logo1">
             <h2>User Hotel</h2>
           </div>
-          
-          <div class="search_container_logo2">
+
+          <div class="search_container_logo2" v-on:click="getUsuarios">
             <h2>Conoce nuestros Usuarios</h2>
             <img src="@/assets/usuario.png" width="65px" height="65px" alt="Imagen1">
           </div>
-      
+
       <div class="search_container_btn">
-       <button v-on:click="getUsuarios">Listar Usuarios</button> 
+       <button v-on:click="getUsuarios">Listar Usuarios</button>
       </div>
-      
+
       <div class="result_container"></div>
         <div class="resul_container_json">
           <ul id="example-1">
             <li v-for="item in users">
             <br>
-              Name: {{ item.name}} <br> 
+              Name: {{ item.name}} <br>
               Surname: {{ item.surname}} <br>
               National id: {{ item.national_id}}<br>
               Email: {{ item.email}}<br>
@@ -32,9 +32,9 @@
             </li>
           </ul>
         </div>
-    
+
     </div>
-  </div>
+<!--  </div>-->
 </template>
 
 
@@ -52,7 +52,7 @@ export default {
       users: [],
     }
   },
-  
+
   methods: {
     getUsuarios(e){
       this.users = [];
@@ -78,8 +78,9 @@ export default {
 .UserListado{
   background:white;
   display: grid;
-  grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: 1fr 0.5fr 0.5fr 4fr 0.5fr 1fr;
+  /*grid-template-columns: 1fr 6fr 1fr;*/
+  /*grid-template-rows: 1fr 0.5fr 0.5fr 4fr 0.5fr 1fr;*/
+  /*position: relative;*/
 }
 
 .search_container{
@@ -121,18 +122,20 @@ export default {
 }
 
 .resul_container_json{
-  overflow-y: scroll;  
+  display: flex;
+  overflow-y: scroll;
   grid-area: 4 / 2 / 5 / 3;
   background-color: #283747;
-  display: flex;
-  justify-content: center;
+
   border: 2px solid rgb(10, 10, 10);
   border-radius: 0px;
-  display: flex;
-  align-items: center;
+
   font-size: 100%;
   color: white;
- 
+  min-height: 400px;
+  max-height: 400px;
+  justify-content: center;
+
 }
 
 .resul_container_json p{
@@ -145,7 +148,7 @@ export default {
   justify-content: center;
   align-content: center;
   max-height: 80px;
-  max-width: auto;
+  /*max-width: auto;*/
 }
 
 .search_container_btn button{
@@ -159,7 +162,7 @@ export default {
     border: 1px solid gray;
     border-left: none; /* Prevent double borders*/
     cursor: pointer;
-    font: "Verdana";
+    font-family: "Verdana";
 }
 
 .search_container_btn button:hover{
@@ -169,7 +172,6 @@ export default {
 .result_container{
   grid-area: 6 / 1 / 7 / 4;
   background-color: white;
-
 }
 
 

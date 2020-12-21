@@ -96,7 +96,8 @@ body{
 }
 
 .footer{
-  margin-top: 10%;
+  margin-top: 20%;
+  /*bottom: 0;*/
   padding: 0;
   width: 100%;
   height: 10vh;
@@ -112,6 +113,10 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+button {
+  outline: none;
 }
 
 </style>
