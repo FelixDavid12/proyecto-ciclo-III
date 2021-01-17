@@ -1,40 +1,41 @@
 //Template del formulario para crear usuario
 <template>
-  <div id="app">
+<!--  <div id="app">-->
     <div class="UserListado">
     <!-- Load icon library -->
 
       <div class="search_container"></div>
-          <div class="search_container_logo">
-            <h2>User Hotel<br>
-            <span>Conoce nuestros usuarios</span></h2>
+
+          <div class="search_container_logo1">
+            <h2>User Hotel</h2>
           </div>
-      
+
+          <div class="search_container_logo2" v-on:click="getUsuarios">
+            <h2>Conoce nuestros Usuarios</h2>
+            <img src="@/assets/usuario.png" width="65px" height="65px" alt="Imagen1">
+          </div>
+
       <div class="search_container_btn">
-        <button >Listar Usuarios</button>
+       <button v-on:click="getUsuarios">Listar Usuarios</button>
       </div>
-      
+
       <div class="result_container"></div>
         <div class="resul_container_json">
-        
-            <p id="result_json"0<b>{{users.a.name}}</b> <br>
-            {{users.a.surname}} <br>
-            {{users.a.national_id}} <br>
-            {{users.a.email}} <br>
-            {{users.a.phone}}</p>
-
-
-            <p id="result_json"0<b>{{users.b.name}}</b> <br>
-            {{users.b.surname}} <br>
-            {{users.b.national_id}} <br>
-            {{users.b.email}} <br>
-            {{users.b.phone}}</p>
+          <ul id="example-1">
+            <li v-for="item in users">
+            <br>
+              Name: {{ item.name}} <br>
+              Surname: {{ item.surname}} <br>
+              National id: {{ item.national_id}}<br>
+              Email: {{ item.email}}<br>
+              Phone: {{ item.phone}}<br>
+            </li>
+          </ul>
         </div>
-    
-    </div>
-  </div>
-</template>
 
+    </div>
+<!--  </div>-->
+</template>
 
 
 <script>
@@ -48,76 +49,110 @@ export default {
   data() {
     return {
       error:"",
-      users: undefined,
+      users: [],
     }
   },
-  mounted(){
-    
+
+  methods: {
+    getUsuarios(e){
+      this.users = [];
       axios.get('https://sprint-2-12.herokuapp.com/users/')
       .then(response => {
-        this.users = response.data;
-        console.log(this.users)
+        var obj = response.data;
+        for (let user of Object.keys(obj)) {
+          var info = obj[user];
+          this.users.push(info);
+        }
       })
       .catch(function (error) {
         console.log('Error: ' + error);
       });
-      
-    
-    
+      e.preventDefault();
+    },
   }
 }
 </script>
 
 
-
-
 <style scoped>
-.UserListado {
+.UserListado{
+  background:white;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
+  /*grid-template-columns: 1fr 6fr 1fr;*/
+  /*grid-template-rows: 1fr 0.5fr 0.5fr 4fr 0.5fr 1fr;*/
+  /*position: relative;*/
 }
-.search_container {
-  grid-area: 1 / 1 / 6 / 5;
-  height: 85vh;
-  width: 100%;
+
+.search_container{
+  grid-area: 1 / 1 / 2 / 4;
+  background-color: white;
 }
-.search_container_logo {
-    grid-area: 3 / 2 / 4 / 4;
-    background-color: #283747;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    font-size: 120%;
+.search_container_logo1{
+  grid-area: 2 / 1 / 3 / 4;
+  background-color:white;
+  display: flex;
+  justify-content: center;
 }
-.search_container_logo h2{
-    color: white;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
+
+.search_container_logo2{
+  grid-area: 3 / 2 / 4 / 3;
+  background-color: #3c99d7;
+  border: 2px solid rgb(10, 10, 10);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
 }
-.search_container_logo span{
-    color: red;
-    text-align: center;
+
+.search_container_logo1 h2{
+  display: flex;
+  justify-content: center;
+  color: #283747;
+  font-size: 30pt;
 }
+
+.search_container_logo2 h2{
+  color:black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15pt;
+}
+
+.search_container_logo2 img{
+  padding: 0px;
+  margin-left: 540px;
+}
+
+.resul_container_json{
+  display: flex;
+  overflow-y: scroll;
+  grid-area: 4 / 2 / 5 / 3;
+  background-color: #283747;
+
+  border: 2px solid rgb(10, 10, 10);
+  border-radius: 0px;
+
+  font-size: 100%;
+  color: white;
+  min-height: 400px;
+  max-height: 400px;
+  justify-content: center;
+
+}
+
+.resul_container_json p{
+  color: white;
+}
+
 .search_container_btn {
-  grid-area: 4 / 2 / 5 / 4;
+  grid-area: 5 / 2 / 6 / 3;
   display: flex;
   justify-content: center;
   align-content: center;
   max-height: 80px;
-  max-width: auto;
-  
+  /*max-width: auto;*/
 }
+
 .search_container_btn button{
-    width: 60%;
+    width: 20%;
     padding: 0px;
     margin-top: 25px;
     background: #2196F3;
@@ -127,34 +162,16 @@ export default {
     border: 1px solid gray;
     border-left: none; /* Prevent double borders*/
     cursor: pointer;
-    font: "Verdana";
-    font-weight : bold;
+    font-family: "Verdana";
 }
+
 .search_container_btn button:hover{
       background-color: #9eb0e0;
 }
-.result_container {
-  grid-area: 1 / 5 / 6 / 9;
-  height: 90vh;
-  width: 100%;
-  display: flex;
-    
-}
-.resul_container_json {
-  grid-area: 2 / 5 / 5 / 8;
-  background-color: #ececec;
-  border: 2px solid rgb(10, 10, 10);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  font-size: 120%;
-  font: "Verdana";
-}
-.resul_container_json p{
-    color: black;
-    font: "Verdana", bold;
+
+.result_container{
+  grid-area: 6 / 1 / 7 / 4;
+  background-color: white;
 }
 
 
