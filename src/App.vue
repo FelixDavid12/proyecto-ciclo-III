@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="header">
-      <h1>Sprint 3</h1>
+      <h1>UserHotel</h1>
       <nav>
         <button v-on:click="init">Inicio</button>
         <button v-on:click="users">Usuarios</button>
