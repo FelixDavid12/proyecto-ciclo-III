@@ -2,7 +2,7 @@
   "name": "userhotel_app",
   "version": "1.0.0",
   "description": "Iniciando proyecto con Vue para el Sprint 3 del Ciclo III - Misión TIC 2022",
-  "author": "kemiranda <kjmd2s@gmail.com>",
+  "author": "Equipo 15",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
